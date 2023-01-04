@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 		<meta charset="utf-8">
 		<title>Sign-In</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -231,6 +232,14 @@ button {
             color:#b0b435;
  
         }
+.error_form
+{
+top: 12px;
+color: rgb(216, 15, 15);
+    font-size: 15px;
+font-weight:bold;
+    font-family: Helvetica;
+}
 
 /*# sourceMappingURL=style.css.map */
 		</style>
@@ -276,9 +285,11 @@ button {
 						<input type="password" name="password" placeholder="Password" class="form-control ">
 						
 					</div>
-        
+          <span class="error_form" id="captcha_message"></span>
+        <div class="g-recaptcha" data-sitekey="6LcmeMwjAAAAAK6S4wmZ-H10pJZ8ypRkb-wkk_99"></div>
+    <div id="mail-status"></div>
 					
-					<button>Sign-In 
+					<button  id="submit" type="submit" name="submit">Sign-In 
 						<i class="zmdi zmdi-arrow-right"></i>
             
 					</button>
@@ -288,6 +299,30 @@ button {
 				</form>
 			</div>
 		</div>
-		
+		<script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+
+<script type="text/javascript">
+ 
+  $(document).on('click','#submit',function()
+  {  $("#captcha_message").hide();
+ var response = grecaptcha.getResponse();
+ if(response.length == 0)
+ {
+ $("#captcha_message").html("Please verify you are not a robot");
+               $("#captcha_message").show();
+ return false;
+ }
+ else{
+ $("#captcha_message").hide();
+ return true;
+ }
+  });
+ 
+ 
+</script>
+
 	</body>
 </html>
