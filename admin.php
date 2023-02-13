@@ -103,6 +103,18 @@ $fullname =  "System Administrator";
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="admin.php?page=owners" class="nav-link 
+                            <?php
+                            echo (@$_GET['page'] == 'owners') ? 'active' : '';
+                            ?>
+                            ">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Owners
+                                </p>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="admin.php?page=dynamic" class="nav-link 
@@ -190,6 +202,8 @@ $fullname =  "System Administrator";
                 include 'admin/bus.php';
             elseif ($_GET['page'] == 'users')
                 include 'admin/users.php';
+            elseif ($_GET['page'] == 'owners')
+                include 'admin/owners.php';
             elseif ($_GET['page'] == 'route')
                 include 'admin/route.php';
             elseif ($_GET['page'] == 'logout') {

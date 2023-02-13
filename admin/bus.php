@@ -32,6 +32,7 @@ $me = "?page=$source";
                                         <th>Bus Name</th>
                                         <th>Window Seats</th>
                                         <th>Second Seats</th>
+                                        <th>Status</th>
                                         <th style="width: 30%;">Action</th>
                                     </tr>
                                 </thead>
@@ -49,6 +50,16 @@ $me = "?page=$source";
                                         <td><?php echo $fullname = $fetch['name']; ?></td>
                                         <td><?php echo $fetch['first_seat']; ?></td>
                                         <td><?php echo $fetch['second_seat']; ?></td>
+                                        <?php
+                                        if($fetch['status']=="pending")
+                                        {
+                                            ?>
+                                        <td>    <a class="btn btn-success" href="admin/aprove.php?id=<?php echo $fetch['id'];?>">Approve</a> /
+                                            <a class="btn btn-danger" href="admin/reject.php?id=<?php echo $fetch['id'];?>">Reject</a>
+                                        </td>
+<?php
+                                        }
+                                        ?>
                                         <td>
                                             <form method="POST">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"

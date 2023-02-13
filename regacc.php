@@ -1,5 +1,46 @@
 <?php
     include 'connection.php';
+
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    function sendMail($email, $v_code)
+    {
+      require ("PHPMailer/PHPMailer.php");
+      require ("PHPMailer/SMTP.php");
+      require ("PHPMailer/Exception.php");
+      $mail = new PHPMailer(true);
+      try {
+        //Server settings
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'netbuseticketing@gmail.com';                     //SMTP username
+        $mail->Password   = 'kqxmaeuonidkrbqi';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    
+        $mail->setFrom('netbuseticketing@gmail.com', 'NetBus');
+        $mail->addAddress($email);    
+     //Content
+     $mail->isHTML(true);                                  //Set email format to HTML
+     $mail->Subject = 'Email Verification From NetBus';
+     $mail->Body    = "Thanks for registering! Click the link to verify the email address
+                       <a href='http://localhost/NETBUSSP/verifymail.php?email=$email&code=$v_code'>Verify</a>";
+     $mail->send();
+     return true;
+    } catch (Exception $e) {
+     // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+     return false;
+    }
+    }
+    
+
+
+
+
   //$cno = $_REQUEST['con_no'];
     $fname = $_POST['fname'];
 	$lname = $_POST['lname'];
@@ -18,7 +59,8 @@
     {
             if($password===$confirm_password)
             {
-            $sq = "INSERT INTO login (username,password,type1,status) VALUES ('$email','$password','user','1')";
+              $code=bin2hex(random_bytes(16));
+            $sq = "INSERT INTO login (username,password,type1,status,code) VALUES ('$email','$password','user','1','$code')";
             
              mysqli_query($conn, $sq);
 
@@ -30,10 +72,12 @@
             {
              $row=mysqli_fetch_assoc($result);
              $loid=$row['loginid'];
-             echo $sql = "INSERT INTO register (loginid,fname,lname,email,adress,phone,gender,estatus) VALUES ('$loid','$fname','$lname','$email','$adress','$phone','$gender','1')";
-             mysqli_query($conn, $sql);
-               echo "<script> alert('Registration successfull'); window.location.href='login.php';</script>";
-             }
+           $sql = "INSERT INTO register (loginid,fname,lname,email,adress,phone,gender,estatus) VALUES ('$loid','$fname','$lname','$email','$adress','$phone','$gender','1')";
+           if($conn->query($sql)=== TRUE && sendMail($email, $code))
+           {
+             echo "<script> alert('Please do Verify the link send to registered email to LOGIN'); </script>";
+     //header("location:user-login.php");
+           } }
          }
          else
             echo "<script> alert('please enter password correctly'); window.location.href='register.php';</script>";

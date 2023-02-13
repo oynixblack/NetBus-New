@@ -17,14 +17,10 @@
                                         $row=mysqli_fetch_assoc($id);
                                         // echo $row['loginid'];
                                         $_SESSION['id']=$row['loginid'];
-                                         $_SESSION['logged_in'] = true;
+                                         //$_SESSION['logged_in'] = true;
                                         header("location:admin.php");
                                     }
-
-
-                            
-                            
-                                    $sqll = "SELECT * FROM login WHERE username = '$myuser' and password = '$mypass' and type1='user' and status='1'";
+                                    $sqll = "SELECT * FROM login WHERE username = '$myuser' and password = '$mypass' and type1='user' and status='1' AND verified='1'";
                                     $result1 = mysqli_query($conn, $sqll);
 
                                     $COUNT1 = mysqli_num_rows($result1);
@@ -39,7 +35,19 @@
                                     }
                             
 
-                                
+   $q = "SELECT * FROM login WHERE username = '$myuser' and password = '$mypass' and type1='owner' and status='1'";
+                                    $result2 = mysqli_query($conn, $q);
+
+                                    $COUNT2 = mysqli_num_rows($result2);
+                                    if ($COUNT2 > 0) {
+                                         $id = mysqli_query($conn, $q);
+                                        $row=mysqli_fetch_assoc($id);
+                                         //echo $row['loginid'];
+                                        $_SESSION['id']=$row['loginid'];
+                                       //  $_SESSION['loggid_in'] = true;
+                                       header("location:owner/index.php");
+
+                                    }
 
 
                                     

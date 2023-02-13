@@ -5,6 +5,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
 
 
 ?>
+<head><link rel="stylesheet" href="speech-recognition/style.css"></head>
 <!-- Content Header (Page header) -->
 <!-- <section class="content-header">
     <div class="container-fluid">
@@ -92,6 +93,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
                             <div class="form-group">
                                 Type Message : <textarea name="message" required minlength="10" id="" cols="30"
                                     rows="10" class="form-control"></textarea>
+                                    <button type="button" id="toggle">speak now</button>
                             </div>
 
                         </div>
@@ -124,3 +126,4 @@ if (isset($_POST['sendFeedback'])) {
 }
 
 ?>
+<body><script  src="speech-recognition/script.js"></script></body>

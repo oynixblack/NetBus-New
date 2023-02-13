@@ -293,6 +293,8 @@ font-weight:bold;
 						<i class="zmdi zmdi-arrow-right"></i>
             
 					</button>
+          <br>
+          <a  href="forgetpasslogin.php" style="color:#f30; margin-left: 5rem;font-size: 20px; "> Forgot password...!?</a>
 					<div class="options">
 					<a href="index.php">Home</a>
 					</div>

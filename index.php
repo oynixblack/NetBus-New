@@ -71,6 +71,9 @@
     <header class="main-header">
         <!-- Start Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            
+        <h1 style="color:black;" ><b>NETBUS E-TICKETING</b></h1>
+
             <div class="container">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
@@ -80,13 +83,15 @@
                     
                 </div>
                 <!-- End Header Navigation -->
-
+                
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="eticketing.php">E-ticketing</a></li>
+                 <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.php">E-ticketing</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="busownerregister.php">Bus Owner Registration</a></li>
+                        <li class="nav-item"><a class="nav-link" href="search.php">Search</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact-us.php">Contact Us</a></li>
                     </ul>
                 </div>

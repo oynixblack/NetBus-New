@@ -196,7 +196,7 @@ $me = "?page=$source";
                             Bus : <select class="form-control" name="bus_id" required id="">
                                 <option value="">Select Bus</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM bus");
+                                $con = connect()->query("SELECT * FROM bus WHERE `status`='Approved'");
                                 while ($row = $con->fetch_assoc()) {
                                     echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
                                 }
