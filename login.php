@@ -253,7 +253,7 @@ font-weight:bold;
 
 	<body>
 
-		<div class="wrapper" style="background-image: url('images/5.jpg');">
+		<div id="google-element" class="wrapper" style="background-image: url('images/5.jpg');">
 			<div class="inner">
 				<div class="image-holder">
 					<img src="images\4.png" alt="">
@@ -300,6 +300,12 @@ font-weight:bold;
 					</div>
 				</form>
 			</div>
+      <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+                            <script >
+                                function loadGoogleTranslate(){
+                                   new google.translate.TranslateElement("google_element");
+                                }
+                            </script>
 		</div>
 		<script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>

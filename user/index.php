@@ -13,6 +13,7 @@ if (! empty($_SESSION['logged_in'])) {
 
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
+
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">   
@@ -50,7 +51,7 @@ if (! empty($_SESSION['logged_in'])) {
 	<!-- Start header -->
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container">
+			<div id="google-element" class="container">
 				<a class="navbar-brand" href="index.php">
                 <p class="contact-action"><i class=""></i><b><h3>WELCOME BACK</h3></b><b><h3><?php echo $name; ?></h2></b></strong></p>
 				</a>
@@ -82,7 +83,14 @@ if (! empty($_SESSION['logged_in'])) {
 						
 						
 					</ul>
+
 				</div>
+				<script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+                            <script >
+                                function loadGoogleTranslate(){
+                                   new google.translate.TranslateElement("google_element");
+                                }
+                            </script>
 			</div>
 		</nav>
 	</header>

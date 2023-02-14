@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
+<script type="text/javascript">
+  /*   (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"3d32c1c050805fc309ff6dddeca9ff9b5","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {}); */
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+
 
 <head>
     <meta charset="utf-8">
@@ -28,18 +40,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 
-    <script type="text/javascript">
-    (function(d, m){
-        var kommunicateSettings = 
-            {"appId":"3fbac1a6dba2d860bc0d8806459e34ba0","popupWidget":true,"automaticChatOpenOnNavigation":true};
-        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-        window.kommunicate = m; m._globals = kommunicateSettings;
-    })(document, window.kommunicate || {});
-/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
-</script>
-
+ 
 </head>
 
 <body>
@@ -74,7 +75,7 @@
             
         <h1 style="color:black;" ><b>NETBUS E-TICKETING</b></h1>
 
-            <div class="container">
+            <div id="google_element" class="container">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,6 +97,20 @@
                     </ul>
                 </div>
                 
+                <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+                            <script >
+                                function loadGoogleTranslate(){
+                                   new google.translate.TranslateElement("google_element");
+                                }
+                                (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"3d32c1c050805fc309ff6dddeca9ff9b5","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+                            </script>
             </div>
             
         </nav>
