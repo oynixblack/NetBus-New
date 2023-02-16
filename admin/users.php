@@ -14,6 +14,47 @@ if (isset($_GET['status'], $_GET['id'])) {
     echo "<script>alert('Action completed!');window.location='admin.php$me';</script>";
 }
 ?>
+<html>
+    <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+ <script type="text/javascript">
+ google.load("visualization", "1", {packages:["corechart"]});
+ google.setOnLoadCallback(drawChart);
+ function drawChart() {
+ var data = google.visualization.arrayToDataTable([
+
+ ['gender','Number'],
+ <?php 
+      $query = "SELECT count(gender) AS number, gender FROM register  GROUP BY gender";
+
+       $exec = mysqli_query($conn,$query);
+       while($row = mysqli_fetch_array($exec)){
+
+       echo "['".$row['gender']."',".$row['number']."],";
+       }
+       ?> 
+ 
+ ]);
+
+ var options = {
+ title: 'Registered Users Gender Breakdown',
+  pieHole: 0.4,
+          pieSliceTextStyle: {
+            color: 'black',
+          },
+          legend: 'none'
+ };
+ var chart = new google.visualization.PieChart(document.getElementById("columnchart12"));
+ chart.draw(data,options);
+ }
+  
+    </script>
+    </head>
 
 <div class="content">
     <!-- Main content -->
@@ -22,7 +63,7 @@ if (isset($_GET['status'], $_GET['id'])) {
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card card-success">
-                        <div class="card-header">
+                        <div class="card-dder">
                             <h3 class="card-title">
                                 Registered Users</h3>
                         </div>
@@ -103,6 +144,9 @@ if (isset($_GET['status'], $_GET['id'])) {
 </div>
 </section>
 </div>
+<div class="container-fluid">
+ <div id="columnchart12" style="width: 100%; height: 500px;"></div>
+ </div>
 
 <div class="modal fade" id="add">
     <div class="modal-dialog modal-lg">

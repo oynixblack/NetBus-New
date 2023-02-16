@@ -1,6 +1,16 @@
 <?php
-$pay = curl_init();
-  $email = $_SESSION['username'];
+  /* require_once 'session.php'; */
+  require_once '../constants.php';
+  /* if (!isset($_SESSION['amount'], $_SESSION['email'])) {
+    @session_destroy();
+    header("Location: ../");
+    exit;
+  } */
+
+
+
+  $pay = curl_init();
+  $email = $_SESSION['email'];
   $amount = $_SESSION['amount'] . "00";
   // die($amount);
   //the amount in kobo. This value is actually NGN 5000
