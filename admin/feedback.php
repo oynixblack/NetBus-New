@@ -63,7 +63,7 @@ $neg=100 - ($overall_sentiment * 100);
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Customer Name</th>
+                                        <th>Customer Id</th>
                                         <th>Message</th>
                                         <th>Status</th>
                                         <th style="width: 30%;">Action</th>
@@ -80,7 +80,7 @@ $neg=100 - ($overall_sentiment * 100);
 
                                     <tr>
                                         <td><?php echo ++$sn; ?></td>
-                                        <td><?php echo $fullname ; ?></td>
+                                        <td><?php echo $fetch['user_id']; ?></td>
                                         <td><?php echo $fetch['message']; ?></td>
                                         <td><?php echo $response = $fetch['response']; ?></td>
                                         <td>

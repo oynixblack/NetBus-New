@@ -29,6 +29,8 @@
                                         $row=mysqli_fetch_assoc($id);
                                          //echo $row['loginid'];
                                         $_SESSION['id']=$row['loginid'];
+                                        $_SESSION['email']=$row['username'];
+
                                          $_SESSION['logged_in'] = true;
                                        header("location:user/index.php");
 

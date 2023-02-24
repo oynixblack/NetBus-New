@@ -647,17 +647,18 @@ function printReport($id)
 
 function sendFeedback($msg)
 {
-    $me = $_SESSION['user_id'];
+    $me = $_SESSION['id'];
+    $email=$_SESSION['email'];
     $msg = connect()->real_escape_string($msg);
-    $stmt = connect()->query("INSERT INTO feedback (user_id, message) VALUES ('$me', '$msg')");
+    $stmt = connect()->query("INSERT INTO feedback (user_id, message) VALUES ('$email', '$msg')");
     if ($stmt) return 1;
     return 0;
 }
 
 function getFeedbacks()
 {
-    //$me = $_SESSION['user_id'];
-    return connect()->query("SELECT * FROM feedback WHERE user_id = 'id'");
+    $me = $_SESSION['email'];
+    return connect()->query("SELECT * FROM feedback WHERE user_id = '$me'");
 }
 
 function replyTo($id, $reply)
