@@ -140,33 +140,33 @@ if (isset($_GET['error'])) {
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <?php
+                <?php
 
-            if (!isset($_GET['page']))
-                include 'individual/index.php';
-            elseif ($_GET['page'] == 'reg')
-                include 'individual/reg.php';
-            elseif ($_GET['page'] == 'pay')
-                include 'individual/pay.php';
-            elseif ($_GET['page'] == 'paid')
-                include 'individual/paid.php';
-            elseif ($_GET['page'] == 'upload')
-                include 'individual/upload.php';
-            elseif ($_GET['page'] == 'status')
-                include 'individual/status.php';
-            elseif ($_GET['page'] == 'logout') {
-                @session_destroy();
-                echo "<script>alert('You are being logged out'); window.location='user/index.php';</script>";
-                exit;
-            } elseif ($_GET['page'] == 'print') {
-                printClearance($user_id);
-                include 'individual/status.php';
-            } else {
-                //Feedback
-                include 'individual/feedback.php';
-            }
-            //TODO:
-            ?>
+                if (!isset($_GET['page']))
+                    include 'individual/index.php';
+                elseif ($_GET['page'] == 'reg')
+                    include 'individual/reg.php';
+                elseif ($_GET['page'] == 'pay')
+                    include 'individual/pay.php';
+                elseif ($_GET['page'] == 'paid')
+                    include 'individual/paid.php';
+                elseif ($_GET['page'] == 'upload')
+                    include 'individual/upload.php';
+                elseif ($_GET['page'] == 'status')
+                    include 'individual/status.php';
+                elseif ($_GET['page'] == 'logout') {
+                    @session_destroy();
+                    echo "<script>alert('You are being logged out'); window.location='user/index.php';</script>";
+                    exit;
+                } elseif ($_GET['page'] == 'print') {
+                    printClearance($user_id);
+                    include 'individual/status.php';
+                } else {
+                    //Feedback
+                    include 'individual/feedback.php';
+                }
+                //TODO:
+                ?>
 
             <!-- /.content -->
         </div>
@@ -182,49 +182,11 @@ if (isset($_GET['error'])) {
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                           
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-
-            <!-- Main content -->
-            
-
-
-
-
-
-            <!-- /.content -->
-        </div>
+      
         <!-- /.content-wrapper -->
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                <?php echo SITE_NAME; ?>
-            </div>
-            <!-- Default to the left -->
-            <strong><?php echo date("Y"); ?> - All Rights Reserved</strong>
-        </footer>
+         
     </div>
     <!-- ./wrapper -->
 

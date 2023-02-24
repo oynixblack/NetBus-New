@@ -16,6 +16,45 @@ $me = "?page=$source";
                                 All Feedbacks</h3>
                         </div>
 
+                        <?php
+ $sql = "SELECT message FROM feedback";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // Output data of each row
+    $texts = array();
+    while($row = $result->fetch_assoc()) {
+        $texts[] = $row["message"];
+    }
+    $url = 'http://127.0.0.1:5000/sentiment';
+    $data = json_encode(array('texts' => $texts));
+    $options = array(
+        'http' => array(
+            'header'  => "Content-type: application/json\r\n",
+            'method'  => 'POST',
+            'content' => $data,
+        ),
+    );
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    $overall_sentiment = json_decode($result, true)['sentiment'];
+$neg=100 - ($overall_sentiment * 100);
+} else {
+    echo "No feedback data found in the database.";
+}
+?>
+
+
+&nbsp;<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: <?php echo abs($overall_sentiment) * 100; ?>%; background-color:green;">
+  </div>
+</div>
+<span>&nbsp;Positive &nbsp;<?php  echo abs($overall_sentiment) * 100;?> %</span>
+&nbsp;<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: <?php echo $neg; ?>%; background-color:red;">
+  </div>
+  </div>
+  <span>&nbsp;Negative&nbsp;<?php  echo $neg;?> %</span>
+
                         <div class="card-body">
 
                             <table id="example1" style="align-items: stretch;"
@@ -24,6 +63,7 @@ $me = "?page=$source";
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Customer Name</th>
                                         <th>Message</th>
                                         <th>Status</th>
                                         <th style="width: 30%;">Action</th>
@@ -40,6 +80,7 @@ $me = "?page=$source";
 
                                     <tr>
                                         <td><?php echo ++$sn; ?></td>
+                                        <td><?php echo $fullname ; ?></td>
                                         <td><?php echo $fetch['message']; ?></td>
                                         <td><?php echo $response = $fetch['response']; ?></td>
                                         <td>
