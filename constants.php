@@ -324,7 +324,7 @@ function printClearance($id)
     $pdf->SetAuthor($fullname);
     $pdf->SetTitle($fullname . " Ticket");
     $pdf->SetSubject(SITE_NAME);
-    $pdf->SetKeywords("Train Booking System, Rail, Rails, Railway, Booking, Project, System, Website, Portal ");
+    $pdf->SetKeywords("Bus Booking System, Bus, Buses, Busbooking, Booking, Project, System, Website, Portal ");
 
 
     // set default monospaced font
@@ -397,6 +397,9 @@ EOD;
 <tr><td colspan="2"><p>&nbsp;</p></td></tr>
 <tr><td colspan="2" style="text-align:center"><font size="-3"><i><em><strong>CAUTION: </strong></em> Any person who (1) Falsifies any of the data on this ticket or (2) uses a falsified ticket as true, Knowing it to be false is liable to prosecution. </i></font></td></tr>
 <tr><td colspan="2" style="text-align:center"><font size="-3"><i><em><strong>NOTE: </strong></em> Phone: +91-7902796869  Email: netbuseticketing@gmail.com</i></font></td></tr>
+
+<tr><td style="text-align:right">
+<img weight="180" height="180" src="$src"></td></tr>
     </table>
 EOD;
     // die($html);
