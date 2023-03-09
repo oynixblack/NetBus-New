@@ -95,30 +95,30 @@ function adminLogin($username, $password)
     return 0;
 }
 
-/*function getIndividualName($id, $conn = null)
+function getIndividualName($id, $conn = null)
 {
     $conn = connect();
-    $q = $conn->query("SELECT * FROM login WHERE loginid = '$id'")->fetch_assoc();
-    return $q['name'];
-}*/
-
-function uploadFile($file)
-{
-
-    $loc = genRand() . "." . strtolower(pathinfo(@$_FILES[$file]['name'], PATHINFO_EXTENSION));
-    $valid_extension = array("jpg", "png", "jpeg");
-    //Check for valid file size
-    if (($_FILES[$file]['size'] && !in_array(strtolower(pathinfo(@$_FILES[$file]['name'], PATHINFO_EXTENSION)), $valid_extension)) || ($_FILES[$file]['size'] && $_FILES[$file]['error']) > 0) {
-        return -1;
-    }
-    $upload = move_uploaded_file(@$_FILES[$file]['tmp_name'], "uploads/" . $loc);
-    if ($upload) {
-        chmod("uploads/" . $loc, 0777);
-        return $loc;
-    } else {
-        return -1;
-    }
+    $q = $conn->query("SELECT * FROM register WHERE loginid = '$id'")->fetch_assoc();
+    return $q['fname'];
 }
+
+// function uploadFile($file)
+// {
+
+//     $loc = genRand() . "." . strtolower(pathinfo(@$_FILES[$file]['name'], PATHINFO_EXTENSION));
+//     $valid_extension = array("jpg", "png", "jpeg");
+//     //Check for valid file size
+//     if (($_FILES[$file]['size'] && !in_array(strtolower(pathinfo(@$_FILES[$file]['name'], PATHINFO_EXTENSION)), $valid_extension)) || ($_FILES[$file]['size'] && $_FILES[$file]['error']) > 0) {
+//         return -1;
+//     }
+//     $upload = move_uploaded_file(@$_FILES[$file]['tmp_name'], "uploads/" . $loc);
+//     if ($upload) {
+//         chmod("uploads/" . $loc, 0777);
+//         return $loc;
+//     } else {
+//         return -1;
+//     }
+// }
 
 function genRand()
 {
@@ -250,9 +250,9 @@ function load($link)
 function printClearance($id)
 {
     ob_start();
-    $con = connect();
-    $me = $_SESSION['user_id'];
-    $getCount = (connect()->query("SELECT schedule.id as schedule_id, register.fname as fullname, register.email as email, register.phone as phone, payment.amount as amount, payment.ref as ref, payment.date as payment_date, schedule.bus_id as bus_id, booked.code as code, booked.no as no, booked.class as class, booked.seat as seat, schedule.date as date, schedule.time as time FROM booked INNER JOIN schedule on booked.schedule_id = schedule.id INNER JOIN payment ON payment.id = booked.payment_id INNER JOIN register ON register.id = booked.user_id WHERE booked.id = '$id'"));
+    $conn = connect();
+    $me=$_SESSION['id'];
+    $getCount = (connect()->query("SELECT schedule.id as schedule_id, register.fname as fullname, register.email as email, register.phone as phone, payment.amount as amount , payment.date as payment_date, schedule.bus_id as bus_id , booked.code as code, booked.no as no, booked.class as class, booked.seat as seat, schedule.date as date, schedule.time as time FROM booked INNER JOIN schedule on booked.schedule_id = schedule.id INNER JOIN payment ON payment.id = booked.payment_id INNER JOIN register ON register.loginid = booked.user_id WHERE booked.id = '$id'"));
     if ($getCount->num_rows != 1) die("Denied");
     $row = $getCount->fetch_assoc();
     $passenger_name = substr($fullname = ($row['fullname']), 0, 15);
@@ -268,7 +268,7 @@ function printClearance($id)
 
     $barcode = "$fullname Ticket For $route - $date by $time. Ticket ID : $uniqueCode";
     $barcodeOutput = generateQR($id, $barcode);
-    $loc = $row['loc'];
+    // $loc = $row['loc'];
     $seat = $row['seat'];
     $bus = getTrainName($row['bus_id']);
     $class = $row['class'];
@@ -369,10 +369,10 @@ function printClearance($id)
 <style>
 table th{font-weight:italic}
 </style>
-<h1 style="text-align:center"><img src="images/trainlg.png" width="100" height="100"/><br/>NetBUS e-Ticketing System<br/> TRAIN TICKET</h1> <div style="text-align:right; font-family:courier;font-weight:bold"><font size="+6">Ticket N<u>o</u>: $uniqueCode </font></div>
+<h1 style="text-align:center"><img src="images/trainlg.png" width="100" height="100"/><br/>NetBUS e-Ticketing System<br/> BUS TICKET</h1> <div style="text-align:right; font-family:courier;font-weight:bold"><font size="+6">Ticket N<u>o</u>: $uniqueCode </font></div>
 <table width="100%" border="1">
 <tr><th colspan="2" style="text-align:center"><b>Personal Data</b></th></tr>
-<tr><th><b>Full Name:</b></th><td>$fullname</td></tr>
+<tr><th><b>Passenger Name:</b></th><td>$fullname</td></tr>
 <tr><th><b>Email:</b></th><td>$email</td></tr>
 <tr><th><b>Contact:</b></th><td>$phone</td></tr>
 <tr><td colspan="2" style="text-align:center"><b>Trip Detail</b></td></tr>
@@ -383,7 +383,7 @@ table th{font-weight:italic}
 <tr><th><b>Date:</b></th><td>$date</td></tr>
 <tr><th><b>Time:</b></th><td>$time</td></tr>
 <tr><th colspan="2"  style="text-align:center"><b>Payment</b></th></tr>
-<tr><th><b>Amount:</b></th><td>$ $amount</td></tr>
+<tr><th><b>Amount:</b></th><td>₹ $amount</td></tr>
 <tr><th><b>Payment Date:</b></th><td>$payment_date</td></tr>
 
 
@@ -396,14 +396,8 @@ EOD;
 <table width="100%">
 <tr><td colspan="2"><p>&nbsp;</p></td></tr>
 <tr><td colspan="2" style="text-align:center"><font size="-3"><i><em><strong>CAUTION: </strong></em> Any person who (1) Falsifies any of the data on this ticket or (2) uses a falsified ticket as true, Knowing it to be false is liable to prosecution. </i></font></td></tr>
-<tr><td colspan="2" style="text-align:center"><font size="-3"><i><em><strong>NOTE: </strong></em> Be an hour early for all neccessary proceedings! </i></font></td></tr>
-    
-    <tr>
-    
-    <td style="text-align:left">
-<img weight="180" height="180" src="uploads/$loc"></td>
-    <td style="text-align:right">
-    <img weight="180" height="180" src="$src"></td></tr></table>
+<tr><td colspan="2" style="text-align:center"><font size="-3"><i><em><strong>NOTE: </strong></em> Phone: +91-7902796869  Email: netbuseticketing@gmail.com</i></font></td></tr>
+    </table>
 EOD;
     // die($html);
     // Print text using writeHTMLCell()

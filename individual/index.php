@@ -68,7 +68,7 @@ $apiKey="rzp_test_NWRgjnzVKNrtx1";
 
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
-<form action="" method="POST">
+<form action="verify.php" method="POST">
 <script
     src="https://checkout.razorpay.com/v1/checkout.js"
     data-key="<?php echo $apiKey; ?>" // Enter the Test API Key ID generated from Dashboard → Settings → API Keys
@@ -84,6 +84,10 @@ $apiKey="rzp_test_NWRgjnzVKNrtx1";
     data-theme.color="#F37254"
 ></script>
 <input type="hidden" custom="Hidden Element" name="hidden" class="btn btn-primary">
+<input type="text"name="payment" value="<?php echo $total ?>">
+<input type="hidden"name="schedule" value="<?php echo $schedule_id ?>">
+<input type="hidden"name="class" value="<?php echo $class ?>">
+<input type="hidden"name="number" value="<?php echo $number ?>">
 </form>
 <!--gateway end-->
 

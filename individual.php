@@ -2,14 +2,10 @@
 @session_start();
 $file_access = true;
 include 'connection.php';
-//include 'session.php';
+// include 'session.php';
 include 'constants.php';
 if (@$_GET['page'] == 'print' && isset($_GET['print'])) printClearance($_GET['print']);
-//$fullname =  getIndividualName($_SESSION['user_id'], $conn);
-if (isset($_GET['error'])) {
-    echo "<script>alert('Payment could not be initialized! Network Error!'); window.location = 'individual.php?page=reg';</script>";
-    exit;
-}
+ $fullname =  getIndividualName($_SESSION['id'], $conn);
 ?>
 <!DOCTYPE html>
 
