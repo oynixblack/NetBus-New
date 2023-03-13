@@ -481,8 +481,8 @@ function sum($id, $type = null)
 function printReport($id)
 {
     ob_start();
-    $con = connect();
-    $getCount = (connect()->query("SELECT schedule.date as date, schedule.time as time, schedule.bus_id as bus, schedule.route_id as route, booked.seat as seat, register.fname as fullname, booked.code as code, booked.class as class FROM booked INNER JOIN schedule ON schedule.id = booked.schedule_id INNER JOIN login ON login.loginid = booked.user_id WHERE booked.schedule_id = '$id' ORDER BY class "));
+    $conn = connect();
+    $getCount = (connect()->query("SELECT schedule.date as date, schedule.time as time, schedule.bus_id as bus, schedule.route_id as route, booked.seat as seat, register.fname as fullname, booked.code as code, booked.class as class FROM booked INNER JOIN schedule ON schedule.id = booked.schedule_id INNER JOIN register ON register.loginid = booked.user_id WHERE booked.schedule_id = '$id' ORDER BY class "));
 
     $output = "<style>
     .a {

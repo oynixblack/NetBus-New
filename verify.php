@@ -29,6 +29,62 @@ require_once 'constants.php';
   $schedule_id = $_POST['schedule'];
   $class = $_POST['class'];
   $number = $_POST['number'];
+  
+                                     
+
+  $select_stock="SELECT phone from register where loginid=$user_id";
+
+  $result_stock=mysqli_query($conn,$select_stock);
+  
+  $row_stock=mysqli_fetch_assoc($result_stock);//fetch data from db
+
+    $phone=$row_stock['phone'];
+  
+// Set API credentials and endpoint URL
+$api_token = 'ff8653622c27425495dd4760ec05c279';
+$service_plan_id = '12fadf401edf4cc7923167cdfde310b5';
+$endpoint_url = "https://us.sms.api.sinch.com/xms/v1/{$service_plan_id}/batches";
+
+// Set SMS data
+$from = '+447520651524';
+$to = $phone;
+$body = 'Hi there,We are pleased to inform you that your booking is confirmed.Thank you .';
+
+// Set POST data
+$data = array(
+'from' => $from,
+'to' => array($to),
+'body' => $body
+);
+$post_data = json_encode($data);
+
+// Set cURL options
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $endpoint_url);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+"Authorization: Bearer {$api_token}",
+"Content-Type: application/json"
+));
+
+// Send request and get response
+$response = curl_exec($ch);
+
+
+// // Process response
+// if ($response) {
+//     $response_data = json_decode($response, true);
+//     echo "SMS sent! Message ID:{$response_data['id']}";
+// } else {
+//     echo "Error sending SMS: " . curl_error($ch);
+// }
+curl_close($ch);
+                                   
+
+                                   
+
   // curl_setopt_array($pay, array(
   //   CURLOPT_URL => "https://api.paystack.co/transaction/verify/" . rawurlencode($reference),
   //   CURLOPT_RETURNTRANSFER => true,

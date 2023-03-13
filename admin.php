@@ -30,6 +30,7 @@ $fullname =  "System Administrator";
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -146,6 +147,29 @@ $fullname =  "System Administrator";
                                 <i class="nav-icon fas fa-train"></i>
                                 <p>
                                   Buses
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="admin.php?page=report" class="nav-link      <?php
+                                                                                    echo (@$_GET['page'] == 'report') ? 'active' : '';
+                                                                                    ?>">
+                                <i class="nav-icon fas fa-file-pdf"></i>
+                                <p>
+                                    Report
+                                </p>
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="admin.php?page=payment" class="nav-link      <?php
+                                                                                    echo (@$_GET['page'] == 'payment') ? 'active' : '';
+                                                                                    ?>">
+                                <i class="nav-icon fas fa-dollar-sign"></i>
+                                <p>
+                                    Payments
                                 </p>
                             </a>
                         </li>

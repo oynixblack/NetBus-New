@@ -97,7 +97,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-primary">
-                <span class="info-box-icon"><i class="fa fa-route"></i></span>
+                <span class="info-box-icon"><i class="fa fa-comment-dots"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Feedbacks Recieved</span>
@@ -112,6 +112,30 @@ if (!isset($file_access)) die("Direct File Access Denied");
             </div>
             <!-- /.info-box -->
         </div>
+        
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-warning">
+                <span class="info-box-icon"><i class="fa fa-dollar-sign"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Payments</span>
+                    <span class="info-box-number">₹ <?php
+                                                            $row = connect()->query("SELECT SUM(amount) AS amount FROM payment")->fetch_assoc();
+                                                            echo $row['amount'] == null ? '0' : $row['amount'];
+                                                            ?></span>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <!-- /.col-md-6 -->
+    </div>
 
     <!--<div class="row">
         <div class="col-md-3 col-sm-6 col-12">
