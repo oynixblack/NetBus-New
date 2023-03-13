@@ -184,6 +184,17 @@ $fullname =  "System Administrator";
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="admin.php?page=search" class="nav-link      <?php
+                                                                                    echo (@$_GET['page'] == 'search') ? 'active' : '';
+                                                                                    ?>">
+                                <i class="nav-icon fas fa-search"></i>
+                                <p>
+                                    Search
+                                </p>
+                            </a>
+                        </li>
+
                         
 
                         <li class="nav-item">

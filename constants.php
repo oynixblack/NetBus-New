@@ -587,9 +587,9 @@ function printReport($id)
     // set document information
     $pdf->SetCreator(PDF_CREATOR);
     $pdf->SetAuthor("Admin");
-    $pdf->SetTitle("Train Bookings " . " Ticket");
+    $pdf->SetTitle("NetBus Bookings " . " Ticket");
     $pdf->SetSubject(SITE_NAME);
-    $pdf->SetKeywords("Train Booking System, Rail, Rails, Railway, Booking, Project, System, Website, Portal ");
+    $pdf->SetKeywords("NetBus E-ticketing System, Rail, Rails, Railway, Booking, Project, System, Website, Portal ");
 
 
     // set default monospaced font
@@ -629,7 +629,7 @@ function printReport($id)
     // set text shadow effect
     $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
     // Set some content to print
-    $html = '<h5 style="text-align:center"><img src="images/trainlg.png" width="80" height="80"/><br/>NetBus E-ticketing System<br/> LIST OF BOOKINGS  FOR ' . $date . ' (' . $time . ')</h5> <div style="text-align:right; font-family:courier;font-weight:bold"><font size="+1">Bus ' . $bus . ' (' . $sn . ' Passengers) : ' . $schedule . ' </font></div>' . $result;
+    $html = '<h5 style="text-align:center"><img src="images/trainlg.png" width="80" height="80"/><br/>NetBus E-ticketing System<br/> LIST OF BOOKINGS  FOR ' . $date . ' (' . $time . ')</h5> <div style="text-align:right; font-family:courier;font-weight:bold"><font size="+1">Bus Name: ' . $bus . ' (' . $sn . ' Passengers) : ' . $schedule . ' </font></div>' . $result;
     // die($html);
     // Print text using writeHTMLCell()
     $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
