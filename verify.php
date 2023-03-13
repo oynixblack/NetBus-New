@@ -29,8 +29,24 @@ require_once 'constants.php';
   $schedule_id = $_POST['schedule'];
   $class = $_POST['class'];
   $number = $_POST['number'];
+  $sqlll="SELECT * from register where loginid=$user_id";
+
+   $result_name=mysqli_query($conn,$sqlll);
+           
+   $row_name=mysqli_fetch_assoc($result_name);
+   
+   $namee=$row_name['fname'];
+   $nameee=$row_name['lname'];
   
-                                     
+  $sqll="SELECT * from booked where user_id=$user_id";
+
+   $result_message=mysqli_query($conn,$sqll);
+           
+   $row_message=mysqli_fetch_assoc($result_message);
+   
+   $pnr=$row_message['code'];
+   $smsdate=$row_message['date'];
+   $seat=$row_message['seat'];
 
   $select_stock="SELECT phone from register where loginid=$user_id";
 
@@ -48,7 +64,7 @@ $endpoint_url = "https://us.sms.api.sinch.com/xms/v1/{$service_plan_id}/batches"
 // Set SMS data
 $from = '+447520651524';
 $to = $phone;
-$body = 'Hi there,We are pleased to inform you that your booking is confirmed.Thank you .';
+$body ="!!! GREETINGS FROM NetBus E-ticketing Services !!!  Dear $namee $nameee, your bus tickets with !!!SEAT NO:$seat !!! & !!!PNR No:$pnr!!! BOOKING DATE: $smsdate is SUCESSFULLY BOOKED!!! Thank You for Booking with Us...Team NETBUS...";
 
 // Set POST data
 $data = array(
