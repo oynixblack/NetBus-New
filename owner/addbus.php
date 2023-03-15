@@ -55,8 +55,7 @@
 								<a class="dropdown-item" href="viewbusstatus.php">View Bus Status</a>
 							</div>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="viewrequest.php">Booking Request</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
+						
 						<li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
 						
 					<!-- <li class="nav-item dropdown">
@@ -188,7 +187,7 @@ function Validate()
 {
     var val = document.getElementById('fname').value;
 
-    if (!val.match(/^[A-Z][A-Za-z]{3,}$/)) 
+    if (!val.match(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/)) 
     {
         document.getElementById('msg1').innerHTML="Start with a Capital letter & Only alphabets without space are allowed!!";
 		            document.getElementById('fname').value = "";

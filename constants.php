@@ -6,7 +6,7 @@
 include_once 'config.php';
 
 define("SITE_NAME", $title);
-date_default_timezone_set("Africa/Lagos");
+date_default_timezone_set("Asia/Kolkata");
 $date = date('D, d-M-Y h:i:s A');;
 $date_small = date('d-M-Y');;
 //INSERT YOUR OWN PAYSTACK API KEYS

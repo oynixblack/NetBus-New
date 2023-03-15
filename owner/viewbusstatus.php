@@ -66,8 +66,7 @@ include 'connection.php';
 								<a class="dropdown-item" href="viewbusstatus.php">View Bus Status</a>
 							</div>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="viewrequest.php">Booking Request</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
+				
 						<li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
 						
 					<!-- <li class="nav-item dropdown">

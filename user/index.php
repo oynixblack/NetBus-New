@@ -62,13 +62,7 @@ if (! empty($_SESSION['logged_in'])) {
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="../individual.php">E-ticketing</a></li>
-						<li class="nav-item"><a class="nav-link" href="viewbusdetails.php">View Bus</a></li>
-					<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Bookings</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="">View
-					Booked Tickets</a>
-								<a class="dropdown-item" href="viewstatus.php">View BookingStatus</a>
+						
 								
 							</div>
 						</li>

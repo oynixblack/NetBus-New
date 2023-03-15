@@ -29,6 +29,7 @@ $me = "?page=$source";
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Reg.No:</th>
                                         <th>Bus Name</th>
                                         <th>Window Seats</th>
                                         <th>Second Seats</th>
@@ -47,6 +48,7 @@ $me = "?page=$source";
 
                                     <tr>
                                         <td><?php echo ++$sn; ?></td>
+                                        <td><?php echo $fetch['regno']; ?></td>
                                         <td><?php echo $fullname = $fetch['name']; ?></td>
                                         <td><?php echo $fetch['first_seat']; ?></td>
                                         <td><?php echo $fetch['second_seat']; ?></td>
@@ -95,6 +97,9 @@ $me = "?page=$source";
                                                     <form action="" method="post">
                                                         <input type="hidden" class="form-control" name="id"
                                                             value="<?php echo $id ?>" required id="">
+                                                            <p>Reg No: : <input type="text" class="form-control"
+                                                                name="regno" value="<?php echo $fetch['regno'] ?>"
+                                                                required minlength="10" id=""></p>
                                                         <p>Bus Name : <input type="text" class="form-control"
                                                                 name="name" value="<?php echo $fetch['name'] ?>"
                                                                 required minlength="3" id=""></p>
@@ -157,6 +162,10 @@ $me = "?page=$source";
                 <form action="" method="post">
 
                     <table class="table table-bordered">
+                          <tr>
+                            <th>Reg No:</th>
+                            <td><input type="text" class="form-control" name="regno" required minlength="10" id=""></td>
+                        </tr>
                         <tr>
                             <th>Bus Name</th>
                             <td><input type="text" class="form-control" name="name" required minlength="3" id=""></td>
