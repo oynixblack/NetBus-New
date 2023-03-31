@@ -163,8 +163,20 @@ ol {
   animation-duration: 300ms;
   animation-fill-mode: both;
 }
+.seat input[type="checkbox"]:checked + label {
+  background: #bada55;
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand;
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+}
+
+.seat .seatladies input[type="checkbox"] {
+  background:  #bada55;
+}
+
 .seat input[type="checkbox"]:disabled + label {
-  background: #ddd;
+  background: red;
   text-indent: -9999px;
   overflow: hidden;
 }
@@ -275,9 +287,9 @@ ol {
                                                 method="post">
                                                 <input type="hidden" class="form-control" name="id"
                                                     value="<?php echo $id ?>" required id="">
-                                                    <div class="seatcontain">
+                                                    <div class="seatcontain" style="background:url('http://localhost/netbus/images/bus.jpg');background-repeat: no-repeat;padding-top: 209px;background-size: cover;width: 100%;height: 100%;padding-right: 40px;padding-left: 0px;">
   <div class="screen-side">
-    <div class="screen"></div>
+    
     <h3 class="select-text">Please select a seat</h3>
   </div>
   
@@ -286,7 +298,7 @@ ol {
     <li class="row row--1">
       <ol class="seats" type="A">
         <li class="seat">
-          <input value="first"   type="checkbox" id="1A" name="class"/>
+          <input value="first"   type="checkbox" id="1A" name="class" />
           <label for="1A">1</label>
         </li>
         <li class="seat">
@@ -310,6 +322,7 @@ ol {
     </li>
     <li class="row row--2">
       <ol class="seats" type="A">
+      <div class="exit exit--front"></div>
         <li class="seat">
          
         </li>
@@ -337,7 +350,7 @@ ol {
           <label for="3A">9</label>
         </li>
         <li class="seat">
-          <input value="second"  type="checkbox" id="3B" name="1A[]" />
+          <input value="second"  type="checkbox" id="3B" name="1A[]" disabled />
           <label for="3B">10</label>
         </li>
       
@@ -356,23 +369,23 @@ ol {
     </li>
     <li class="row row--4">
       <ol class="seats" type="A">
-        <li class="seat">
+        <li class="seat seatladies">
           <input  value="first"   type="checkbox" id="4A" name="1A[]" />
           <label for="4A">13</label>
         </li>
-        <li class="seat">
+        <li class="seat seatladies">
           <input value="second"  type="checkbox" id="4B" name="1A[]" />
           <label for="4B">14</label>
         </li>
        
-        <li class="seat">
+        <li class="seat seatladies">
        
         </li>
-        <li class="seat">
+        <li class="seat seatladies">
           <input value="second"  type="checkbox" id="4C" name="1A[]" />
           <label for="4C">15</label>
         </li>
-        <li class="seat">
+        <li class="seat seatladies">
           <input  value="first"   type="checkbox" id="4D" name="1A[]" />
           <label for="4D">16</label>
         </li>
@@ -439,7 +452,7 @@ ol {
         
        
         <li class="seat">
-  </div>
+
         </li>
         <li class="seat">
         <input value="second" type="checkbox" id="7C" name="1A[]"/>
@@ -453,9 +466,10 @@ ol {
     </li>
     <li class="row row--8">
       <ol class="seats" type="A">
-        <li class="seat">
-        <div class="exit exit--front"></div>
+      <div class="exit exit--front"></div>
  
+        <li class="seat">
+        
         </li>
         <li class="seat">
          
