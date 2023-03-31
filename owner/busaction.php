@@ -19,10 +19,11 @@ $tmpname=$_FILES['file']['tmp_name'];
             $em=$_POST['email'];
             $a=$_POST['adress'];
             $ph=$_POST['phone'];
-            $sql=mysqli_query($conn,"insert into bus(name,first_seat,second_seat,regno,scapacity,frm,tdetails,image,vid,status)values('$fn','$em','$em','$ln','$em','$a','$ph','$name','$val','pending')");
+            $regn=$_POST['reg'];
+            $sql=mysqli_query($conn,"insert into bus(name,first_seat,second_seat,regno,scapacity,frm,tdetails,image,vid,status)values('$fn','$em','$em','$regn','$em','$a','$ph','$name','$val','pending')");
            // $sql=mysqli_query($conn,"insert into owner(fname,lname,email,address,phone,image,gender,loggid)values('$fn','$ln','$em','$a','$ph','$name','$g','$loid')");
            
-            
+            echo "$em";
            echo "<script> alert('Added successfully'); window.location.href='addbus.php';</script>";
            
         

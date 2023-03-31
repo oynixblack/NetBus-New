@@ -285,8 +285,8 @@ font-weight:bold;
 						<input type="password" name="password" placeholder="Password" class="form-control ">
 						
 					</div>
-          <span class="error_form" id="captcha_message"></span>
-        <div class="g-recaptcha" data-sitekey="6LcmeMwjAAAAAK6S4wmZ-H10pJZ8ypRkb-wkk_99"></div>
+          <!-- <span class="error_form" id="captcha_message"></span> -->
+        <!-- <div class="g-recaptcha" data-sitekey="6LcmeMwjAAAAAK6S4wmZ-H10pJZ8ypRkb-wkk_99"></div> -->
     <div id="mail-status"></div>
 					
 					<button  id="submit" type="submit" name="submit">Sign-In 

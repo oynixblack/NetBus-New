@@ -48,7 +48,7 @@ $me = "?page=$source"
 
                                             <td>
                                                 <a href="admin.php?page=report&id=<?php echo $id; ?>">
-                                                    <button type="submit" class="btn btn-success">
+                                                    <button id="view" type="submit" class="btn btn-success">
                                                         View
                                                     </button></a>
                                             </td>

@@ -448,7 +448,7 @@ var pas1=document.getElementById("password");
 	
 }
 	</script>
-					<button><i class="zmdi zmdi-arrow-right"></i>Register</button>
+					<button><i class="zmdi zmdi-arrow-right" id="reg"></i>Register</button>
 
           
 					<div class="options">

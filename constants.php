@@ -183,12 +183,12 @@ function getRouteFromSchedule($id)
     return getRoutePath($q['id']);
 }
 
-function getFee($id, $type = 'second')
+function getFee($id, $type = 'first')
 {
-    if ($type == 'second') {
-        $type = 'second_fee';
-    } else {
+    if ($type == 'first') {
         $type = 'first_fee';
+    } else {
+        $type = 'second_fee';
     }
     $q = connect()->query("SELECT $type FROM schedule WHERE id = '$id'")->fetch_assoc();
     return $q[$type];

@@ -105,7 +105,16 @@ if (@$_GET['page'] == 'print' && isset($_GET['print'])) printClearance($_GET['pr
                                 <p>Feedback</p>
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="individual.php?page=search" class="nav-link      <?php
+                                                                                    echo (@$_GET['page'] == 'search') ? 'active' : '';
+                                                                                    ?>">
+                                <i class="nav-icon fas fa-search"></i>
+                                <p>
+                                 Ticket Search
+                                </p>
+                            </a>
+                        </li>
                         <li>
                         <li class="nav-item">
                             <a href="individual.php?page=logout" class="nav-link">
@@ -146,8 +155,8 @@ if (@$_GET['page'] == 'print' && isset($_GET['print'])) printClearance($_GET['pr
                     include 'individual/pay.php';
                 elseif ($_GET['page'] == 'paid')
                     include 'individual/paid.php';
-                elseif ($_GET['page'] == 'upload')
-                    include 'individual/upload.php';
+                elseif ($_GET['page'] == 'search')
+                    include 'individual/search.php';
                 elseif ($_GET['page'] == 'status')
                     include 'individual/status.php';
                 elseif ($_GET['page'] == 'logout') {
